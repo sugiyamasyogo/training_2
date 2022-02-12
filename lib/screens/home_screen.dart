@@ -9,16 +9,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<String> _texts = [
+    "おめでとうございます",
+    "合格です",
+    "よくできました",
+    "残念でした",
+    "不合格です",
+    "がんばりましょう"
+  ];
 
-  // String _text01 = "おめでとうございます";
-  // String _text02 = "合格です";
-  // String _text03 = "よくできました";
-  // String _text04 = "残念でした";
-  // String _text05 = "不合格です";
-  // String _text06 = "がんばりましょう";
+  late Soundpool _soundpool;
 
-  List<String> _texts = ["おめでとうございます","合格です","よくできました",
-                         "残念でした","不合格です","がんばりましょう"];
+  @override
+  void initState() {
+    _soundpool = Soundpool.fromOptions();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _soundpool.release();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
